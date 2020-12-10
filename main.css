@@ -1,0 +1,101 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: rgb(19, 19, 19);
+    color: green;
+    font-family: 'Segoe UI';
+    overflow: hidden;
+}
+
+@keyframes start {
+    from {
+        top: 50%;
+        width: 1%;
+        left: 50%;
+    }
+    to {
+        top: 0%;
+        width: 100%;
+        left: 0;
+    }
+}
+
+@keyframes start-btm {
+    from {
+        top: 50%;
+        width: 1%;
+        left: 50%;
+    }
+    to {
+        top: 98%;
+        width: 100%;
+        left: 0;
+    }
+}
+.start-top {
+    animation: start 1s;
+    color: green;
+    position: absolute;
+    top: 50%;
+    background-color: green;
+    width: 100%;
+}
+
+.start-bottom {
+    animation: start-btm 1s;
+    color: green;
+    position: absolute;
+    top: 50%;
+    background-color: green;
+    width: 100%;
+}
+.entry {
+    visibility: hidden;
+    margin: auto;
+    display: flex;
+    flex-flow:column;
+}
+
+.entry-box {
+    margin: auto;
+    margin-top: 10%;
+    font-size: 50px;
+}
+
+.user-name {
+    margin: auto;
+    margin-top: 70px;
+}
+
+.name {
+    width: 600px;
+    height: 50px;
+    border: 0;
+    font-size: 36px;
+    text-transform: uppercase;
+}
+
+.blink-big {
+    background-color: green;
+    width: 30px;
+    height: 10px;
+    position: absolute;
+    top: 330px;
+    left: 535px;
+}
+
+
+
+
+
+
+
+
+
+
+
+img {
+    width: 300px;
+    height: 300px;
+}

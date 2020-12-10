@@ -1,3 +1,52 @@
+//start screen
+
+const flowTop = document.querySelector('.start-top');
+const flowBtm = document.querySelector('.start-bottom');
+const entry = document.querySelector('.entry');
+
+let time = Date.now();
+let timer = setInterval(function(){
+    let timePassed = Date.now() - time;
+
+    if (timePassed >= 1000){
+        clearInterval(timer);
+        flowTop.style.display = "none";
+        flowBtm.style.display = "none";
+        entry.style.visibility = "visible";
+        return;
+    }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function computerMove(){
     let choose = ['rock','paper','scissors'];
     let random = Math.floor(Math.random() * choose.length)
