@@ -33,6 +33,17 @@
         left: 0;
     }
 }
+
+
+@keyframes blink {
+    from {
+        opacity: 1;
+        color: rgb(10, 196, 10);
+    }
+    to {
+        opacity: 0.5;
+    }
+}
 .start-top {
     animation: start 1s;
     color: green;
@@ -60,7 +71,8 @@
 .entry-box {
     margin: auto;
     margin-top: 10%;
-    font-size: 50px;
+    font-size: 80px;
+    animation: blink 1s infinite;
 }
 
 .user-name {
@@ -70,10 +82,13 @@
 
 .name {
     width: 600px;
-    height: 50px;
+    height: 55px;
     border: 0;
-    font-size: 36px;
+    font-size: 42px;
     text-transform: uppercase;
+    background-color: black;
+    resize: none;
+    padding: 4px;
 }
 
 .blink-big {
@@ -81,11 +96,15 @@
     width: 30px;
     height: 10px;
     position: absolute;
-    top: 330px;
-    left: 535px;
+    top: 385px;
+    left: 480px;
+    animation: blink 1s;
+    animation-iteration-count: infinite;
 }
 
-
+.story {
+    visibility: hidden;
+}
 
 
 

@@ -3,6 +3,7 @@
 const flowTop = document.querySelector('.start-top');
 const flowBtm = document.querySelector('.start-bottom');
 const entry = document.querySelector('.entry');
+const story = document.querySelector('.story');
 
 let time = Date.now();
 let timer = setInterval(function(){
@@ -10,12 +11,41 @@ let timer = setInterval(function(){
 
     if (timePassed >= 1000){
         clearInterval(timer);
-        flowTop.style.display = "none";
-        flowBtm.style.display = "none";
+        flowTop.style.visibility = "hidden";
+        flowBtm.style.visibility = "hidden";
         entry.style.visibility = "visible";
         return;
     }
 });
+
+const blinkBig = document.querySelector('.blink-big');
+const userName = document.querySelector('.name');
+ // initial position of blink div 
+
+const blinkMove = function(){
+    let length = userName.textLength;
+    let posn = 470;
+    for (let i = 0; i < length; i++){
+        posn += 24;
+    }
+    blinkBig.style.left = posn + 'px';
+}
+
+userName.addEventListener('input',blinkMove);
+
+// From name entry to story screen
+
+userName.addEventListener('keydown',function(event){
+    if (event.which === 13){
+        entry.style.visibility = "hidden";
+        story.style.visibility = "visible";
+    }
+})
+
+
+
+
+
 
 
 
