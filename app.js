@@ -35,14 +35,34 @@ userName.addEventListener('input',blinkMove);
 
 // From name entry to story screen
 
+
+let storyTell = `YOU HAVE BEEN CHOSEN FOR A GREAT MISSION. 
+        YOU MUST DEFEAT COMPUTERS. CHOOSE THE WEAPON YOU NEED. BUT, BE CAUTIOUS, 
+        COMPUTERS ARE EQUIPPED WITH THE LATEST WEAPONS ALSO. EVEN
+        YOUR SKILLS ARE HIGH, IT IS ALL MAINLY BASED ON LUCK.`
+
+let openStory = `COMPUTERS CONQUERED THE WORLD! YOU ARE OUR LAST HOPE!`
+const storyHead = document.querySelector('.story-head');
+const storyMain = document.querySelector('.story-main');
+
 userName.addEventListener('keydown',function(event){
     if (event.which === 13){
         entry.style.visibility = "hidden";
         story.style.visibility = "visible";
+        addTextByDelay(openStory,storyHead);
+        setTimeout(() => {addTextByDelay(storyTell,story)},5500);
     }
 })
 
-
+function addTextByDelay(text,loc){
+    if (text.length > 0){
+    loc.append(text[0]);
+    setTimeout(
+        function(){
+            addTextByDelay(text.slice(1),loc);
+        }, 100);
+    }
+}
 
 
 

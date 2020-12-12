@@ -104,9 +104,26 @@
 
 .story {
     visibility: hidden;
+    font-size: 30px;
+    position: absolute;
+    top: 10%;
+    margin: 100px;
 }
 
 
+
+.story-head {
+    font-size: 40px;
+    margin: auto;
+    margin-bottom: 50px;
+}
+
+.story-main {
+    font-size: 30px;
+    text-align: center;
+    width: 70%;
+    margin: auto;
+}
 
 
 
