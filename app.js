@@ -4,6 +4,7 @@ const flowTop = document.querySelector('.start-top');
 const flowBtm = document.querySelector('.start-bottom');
 const entry = document.querySelector('.entry');
 const story = document.querySelector('.story');
+const page = document.querySelector('.page');
 
 let time = Date.now();
 let timer = setInterval(function(){
@@ -47,10 +48,14 @@ const storyMain = document.querySelector('.story-main');
 
 userName.addEventListener('keydown',function(event){
     if (event.which === 13){
-        entry.style.visibility = "hidden";
+        entry.style.display = "none";
         story.style.visibility = "visible";
         addTextByDelay(openStory,storyHead);
         setTimeout(() => {addTextByDelay(storyTell,story)},5500);
+        setTimeout(() => {
+            story.style.display= "none";
+            page.style.visibility = "visible";
+        }, 35000)
     }
 })
 
@@ -65,119 +70,135 @@ function addTextByDelay(text,loc){
 }
 
 
+const rock = document.getElementById('usr-rock');
+const paper = document.getElementById('usr-paper');
+const scissors = document.getElementById('usr-scissors');
+const log = document.querySelector('.game');
 
 
+let pick;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+rock.addEventListener('click',(e)=>{
+    pick = e.target.name;
+    playRound();
+})
+paper.addEventListener('click',(e)=>{
+    pick = e.target.name;
+    playRound();
+})
+scissors.addEventListener('click',(e)=>{
+    pick = e.target.name;
+    playRound();
+})
 
 function computerMove(){
-    let choose = ['rock','paper','scissors'];
+    let choose = ['rock','paper','scissors','rock','paper','scissors','rock','paper','scissors','rock','paper','scissors'];
     let random = Math.floor(Math.random() * choose.length)
     let choice = choose[random];
     return choice;
 }
 
-
-
-
 function playRound (a, b){
     let result;
     a = computerMove();
-    b = prompt("Please enter 'rock','paper'or 'scissors' to select your weapon").toLowerCase();
-    console.log(a + ' ------ this is computer ----');
-    console.log(b + ' ------ this is user entry ----')
+    b = pick;
+    let count = 0;
+    let newLog = document.createElement('p');
+    newLog.style.backgroundColor = "black";
+    newLog.innerText = `---- ${a} ---- Computer Weapon \n ---- ${b} ---- user Weapon`
+    log.appendChild(newLog);
+    
     if (a === 'rock' && b === 'rock'){
         result = 'Draw!';
-        console.log(result);
-        return result;
+        const newLog = document.createElement('p');
+        newLog.innerText = result;
+        newLog.style.backgroundColor = "black";
+        log.appendChild(newLog);
     } else if (a === 'scissors' && b === 'scissors'){
         result = 'Draw!';
-        console.log(result);
-        return result;
+        const newLog = document.createElement('p');
+        newLog.innerText = result;
+        newLog.style.backgroundColor = "black";
+        log.appendChild(newLog);
     } else if  (a === 'paper' && b === 'paper'){
         result = 'Draw!';
-        console.log(result);
-        return result;
+        const newLog = document.createElement('p');
+        newLog.innerText = result;
+        newLog.style.backgroundColor = "black";
+        log.appendChild(newLog);
     } else if (a === 'rock' && b === 'scissors'){
         result = 'Computer wins!';
-        console.log(result);
-        return result;
+        const newLog = document.createElement('p');
+        newLog.innerText = result;
+        newLog.style.backgroundColor = "black";
+        log.appendChild(newLog);
     } else if (a === 'scissors' && b === 'paper') {
         result = 'Computer wins!';
-        console.log(result);
-        return result;
+        const newLog = document.createElement('p');
+        newLog.innerText = result;
+        newLog.style.backgroundColor = "black";
+        log.appendChild(newLog);
     } else if (a === 'paper' && b === 'rock'){
         result = 'Computer wins!';
-        
-        console.log(result);    
-        return result;
+        const newLog = document.createElement('p');
+        newLog.innerText = result;
+        newLog.style.backgroundColor = "black";
+        log.appendChild(newLog);
     } 
     else {
         result = "User wins!";
-        
-        console.log(result);
-        return result;
+        const newLog = document.createElement('p');
+        newLog.innerText = result;
+        newLog.style.backgroundColor = "black";
+        log.appendChild(newLog);
     }
     
+    if (result === 'Computer wins!'){
+        compRes++;
+        let scoreText = `Computer score is ---- ${compRes}`;
+        const newLog = document.createElement('p');
+        newLog.innerText = scoreText;
+        newLog.style.backgroundColor = "black";
+        log.appendChild(newLog);
+    } else if (result === 'User wins!'){
+        userRes++;
+        let scoreText = `User score is ---- ${userRes}`;
+        const newLog = document.createElement('p');
+        newLog.innerText = scoreText;
+        newLog.style.backgroundColor = "black";
+        log.appendChild(newLog);
+    } else {
+        const newLog = document.createElement('p');
+        newLog.innerText = 'That was a draw, no points for you guys =(';
+        newLog.style.backgroundColor = "black";
+        log.appendChild(newLog);
+}
+        (re = () => {newLog = document.createElement('p');
+        newLog.innerText = `Score table is ------ Computer | ${compRes} | ----- User | ${userRes} | ------`;
+        newLog.style.backgroundColor = "black";
+        log.appendChild(newLog);})();
+
+    if (count === 4 || userRes === 3 || compRes === 3){
+            newLog.innerText = `This was last round and the winner is: `;
+            newLog.style.backgroundColor = "black";
+            log.appendChild(newLog);
+            count = 0;
+    if (compRes > userRes){
+        newLog.innerText = `[[[[COMPUTER]]]] ------- ${compRes} ------- points`;
+        newLog.style.backgroundColor = "black";
+        log.appendChild(newLog);
+    } else {
+        newLog.innerText = `[[[[MANKIND WON]]]] ------- ${userRes} ------ points`;
+        newLog.style.backgroundColor = "black";
+        log.appendChild(newLog);
+    };
+    userRes = 0;
+    compRes = 0;
+    count ++;
+}
 }
 
 let compRes = 0;
 let userRes = 0;
 
-function game(play){
-    console.log ('There will be 5 rounds to compete');
 
-    for (let i = 0; i < 5; i ++){
-        
-        console.log (`Round ${i+1}`)
-        let res = playRound();
-
-        if (res === 'Computer wins!'){
-            compRes++;
-            console.log(`Computer score is ---- ${compRes}`)
-        } else if (res === 'User wins!'){
-            userRes++;
-            console.log(`User score is ---- ${userRes}`)
-        } else {
-            console.log('That was a draw, no points for you guys =(')
-    }
-    console.log(`Score table is ------ Computer | ${compRes} | ----- User | ${userRes} | ------`)
-    if (i === 4 || userRes === 3 || compRes === 3){
-        console.log(`This was last round and the winner is: `);
-        if (compRes > userRes){
-            console.log(`[[[[COMPUTER]]]] ------- ${compRes} ------- points`);
-        } else {
-            console.log(`[[[[MANKIND WON]]]] ------- ${userRes} ------ points`)
-        };
-        userRes = 0;
-        compRes = 0;
-    }
-}
-}

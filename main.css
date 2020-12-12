@@ -125,13 +125,72 @@
     margin: auto;
 }
 
+/* Main game window, only the screen used for game */
+.page {
+    visibility: hidden;
+}
 
+.head {
+    margin:auto;
+    margin-top: 10px;
+}
 
+.intro {
+    font-size: 30px;
+    text-align: center;
+}
 
+.main {
+    border: solid 8px green;
+    margin: 50px;
+    display: flex;
+    flex-direction: row;
+}
 
+.icons {
+    width: 22%;
+}
+.sep {
+    border: 3px green solid;
+    width: 100%;
+    padding: 0;
+}
 
 
 img {
     width: 300px;
     height: 300px;
+    margin: 10px;
+}
+.btn-user {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10%;
+}
+
+.btn-user > img {
+    width: 80px;
+    height: 80px;
+    
+    border: 3px solid green;
+}
+
+.btn-user > img:hover {
+    border: 2px solid red;
+}
+
+.comp-res {
+    width: 80px;
+    height: 300px;
+}
+
+.comp-res > img {
+    width: 80px;
+    margin: 5px;
+    margin-top: 90px;
+}
+
+.game {
+    background-color: black;
+    width: 70%;
 }
